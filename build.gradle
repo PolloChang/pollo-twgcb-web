@@ -9,7 +9,7 @@ plugins {
     id "eclipse"
 }
 
-group = "twgcb.pollochang.work"
+group = "work.pollochang.twgcb"
 
 repositories {
     mavenCentral()
@@ -21,7 +21,10 @@ configurations {
     }
 }
 
+version "1.0"
+
 dependencies {
+    profile "org.grails.profiles:web"
     implementation("org.grails:grails-core")
     implementation("org.grails:grails-logging")
     implementation("org.grails:grails-plugin-databinding")
@@ -55,6 +58,8 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter:5.10.1")
     testImplementation("io.micronaut:micronaut-http-client")
 
+
+    implementation group: 'org.postgresql', name: 'postgresql', version: '42.7.3'
 }
 
 application {

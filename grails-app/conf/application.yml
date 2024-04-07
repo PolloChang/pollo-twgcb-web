@@ -50,15 +50,23 @@ grails:
   controllers:
     defaultScope: singleton
 dataSource:
-  url: jdbc:h2:mem:devDb;LOCK_TIMEOUT=10000;DB_CLOSE_ON_EXIT=FALSE
-  driverClassName: org.h2.Driver
-  username: sa
-  password: ''
   pooled: true
   jmxExport: true
-  dbCreate: update
+  driverClassName: org.postgresql.Driver
+  dialect: org.hibernate.dialect.PostgreSQLDialect
+  logSql: false
+  formatSql: true
 hibernate:
   cache:
     queries: false
     use_second_level_cache: false
     use_query_cache: false
+
+environments:
+  development:
+    dataSource:
+      dbCreate: none
+      url: jdbc:postgresql://127.0.0.1:5432/twgcb_db
+      username: twgcb_user1
+    logging:
+      config: "grails-app/conf/logback-development.xml"

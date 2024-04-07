@@ -1,4 +1,4 @@
-package twgcb.pollochang.work
+package work.pollochang.twgcb
 
 class UrlMappings {
     static mappings = {
