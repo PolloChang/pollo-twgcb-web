@@ -1,6 +1,5 @@
 package work.pollochang.util;
 
-import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -17,12 +16,11 @@ import javax.validation.constraints.NotNull;
 public class PAes {
 
     private static SecretKeySpec secretKey;
-    private static byte[] key;
 
     private static void setKey(final String myKey) {
         MessageDigest sha;
         try {
-            key = myKey.getBytes(StandardCharsets.UTF_8);
+            byte[] key = myKey.getBytes(StandardCharsets.UTF_8);
             sha = MessageDigest.getInstance("SHA-1");
             key = sha.digest(key);
             key = Arrays.copyOf(key, 16);
