@@ -24,6 +24,7 @@ configurations {
 version "1.0"
 
 dependencies {
+
     profile "org.grails.profiles:web"
     implementation("org.grails:grails-core")
     implementation("org.grails:grails-logging")
@@ -35,19 +36,20 @@ dependencies {
     implementation("org.grails:grails-plugin-url-mappings")
     implementation("org.grails:grails-web-boot")
     implementation("org.grails.plugins:gsp")
-    implementation("org.grails.plugins:hibernate5")
+    implementation("org.grails.plugins:hibernate5:${hibernate5Version}")
     implementation("org.grails.plugins:scaffolding")
+    //https://mvnrepository.com/artifact/org.hibernate/hibernate-core
     implementation("org.hibernate:hibernate-core:5.6.15.Final")
-    implementation("org.springframework.boot:spring-boot-autoconfigure")
-    implementation("org.springframework.boot:spring-boot-starter")
-    implementation("org.springframework.boot:spring-boot-starter-actuator")
-    implementation("org.springframework.boot:spring-boot-starter-jetty")
-    implementation("org.springframework.boot:spring-boot-starter-logging")
-    implementation("org.springframework.boot:spring-boot-starter-validation")
+    implementation("org.springframework.boot:spring-boot-autoconfigure:${springBootVersion}")
+    implementation("org.springframework.boot:spring-boot-starter:${springBootVersion}")
+    implementation("org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}")
+    implementation("org.springframework.boot:spring-boot-starter-jetty:${springBootVersion}")
+    implementation("org.springframework.boot:spring-boot-starter-logging:${springBootVersion}")
+    implementation("org.springframework.boot:spring-boot-starter-validation:${springBootVersion}")
+    developmentOnly("org.springframework.boot:spring-boot-devtools:${springBootVersion}")
     compileOnly("io.micronaut:micronaut-inject-groovy")
     console("org.grails:grails-console")
     runtimeOnly("com.bertramlabs.plugins:asset-pipeline-grails:4.3.0")
-    runtimeOnly("com.h2database:h2")
     runtimeOnly("javax.xml.bind:jaxb-api:2.3.1")
     runtimeOnly("org.apache.tomcat:tomcat-jdbc")
     runtimeOnly("org.fusesource.jansi:jansi:1.18")
