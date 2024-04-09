@@ -45,18 +45,6 @@
             <th>
                 ${message(code: "twgcb.cname.label")}
             </th>
-            <th>
-                ${message(code: "twgcb.explanation.label")}
-            </th>
-            <th>
-                ${message(code: "twgcb.instructions.label")}
-            </th>
-            <th>
-                ${message(code: "twgcb.defaultValue.label")}
-            </th>
-            <th>
-                ${message(code: "twgcb.remark.label")}
-            </th>
         </tr>
         </thead>
         <tbody>
@@ -66,19 +54,10 @@
                     ${twgcbI?.twgcbId}
                 </td>
                 <td>
-                    ${twgcbI?.type}
+                    ${twgcbI?.typeDesc}
                 </td>
                 <td>
-                    ${twgcbI?.explanation}
-                </td>
-                <td>
-                    ${twgcbI?.instructions}
-                </td>
-                <td>
-                    ${twgcbI?.defaultValue}
-                </td>
-                <td>
-                    ${twgcbI?.remark}
+                    ${twgcbI?.cname}
                 </td>
             </tr>
         </g:each>

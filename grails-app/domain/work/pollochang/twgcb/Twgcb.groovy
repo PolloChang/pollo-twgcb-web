@@ -34,6 +34,8 @@ class Twgcb {
         instructions        column:"instructions",      comment:"設定方法"
         defaultValue        column:"default_value",     comment:"GCB設定值"
         remark				column:"remark",            comment:"備註"
+
+
     }
 
     static constraints = {
