@@ -4,19 +4,23 @@ import grails.gorm.transactions.Transactional
 import grails.web.servlet.mvc.GrailsParameterMap
 import org.hibernate.criterion.CriteriaSpecification
 import org.hibernate.type.StandardBasicTypes
+import work.pollochang.util.PFilterResult
 import work.pollochang.util.PFilterType
 
 
 @Transactional
 class TwGcbService {
 
-    List<Twgcb> filter(
+    PFilterResult filter(
             GrailsParameterMap params,
             PFilterType filterType = PFilterType.DEFAULT
     ) {
-        params.max = (params.limit ?: "10").toInteger()
+
+        PFilterResult pFilterResult = new PFilterResult()
+
+        params.max = (params.max ?: "10").toInteger()
         params.offset = (params?.offset ?: "0").toInteger()
-        return Twgcb.createCriteria().list(params) {
+        List<Twgcb> twgcbList =  Twgcb.createCriteria().list(params) {
             resultTransformer(CriteriaSpecification.ALIAS_TO_ENTITY_MAP)
 
             switch (filterType) {
@@ -56,6 +60,10 @@ class TwGcbService {
             order("twgcbId", "asc")
         } as List<Twgcb>
 
+        pFilterResult.domainList = twgcbList
+        pFilterResult.totalCount = twgcbList.totalCount
+
+        return pFilterResult
 
     }
 }

@@ -1,5 +1,6 @@
 package work.pollochang.twgcb
 
+import work.pollochang.util.PFilterResult
 import work.pollochang.util.PFilterType
 
 /**
@@ -13,8 +14,11 @@ class TwGcbController {
      * 查尋功能
      */
     def index() {
-        List<Twgcb> twgcbL = twGcbService.filter(params, PFilterType.FULL)
 
-        render view: "/twGcb/index", model: [twgcbL: twgcbL], params:params
+        PFilterResult pFilterResult = twGcbService.filter(params, PFilterType.FULL)
+        List<Twgcb> twgcbL = pFilterResult.getDomainList() as List<Twgcb>
+        long totalCount = pFilterResult.getTotalCount()
+
+        render view: "/twGcb/index", model: [twgcbL: twgcbL, totalCount: totalCount], params:params
     }
 }
