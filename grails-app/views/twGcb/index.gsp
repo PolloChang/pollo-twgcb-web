@@ -120,6 +120,10 @@
                           noSelection="['': '---']"
                 />
             </span>
+            <span>
+                <label for="cname">${message(code: "twgcb.cname.label")}</label>
+                <g:textField name="cname" value="${params?.cname}"/>
+            </span>
         </div>
         <div>
             <g:hiddenField name="offset" value="${params?.offset?: "0"}"/>

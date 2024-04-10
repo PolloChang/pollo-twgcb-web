@@ -15,11 +15,11 @@ class TwGcbService {
             GrailsParameterMap params,
             PFilterType filterType = PFilterType.DEFAULT
     ) {
-
         PFilterResult pFilterResult = new PFilterResult()
 
         params.max = (params.max ?: "10").toInteger()
         params.offset = (params?.offset ?: "0").toInteger()
+
         List<Twgcb> twgcbList =  Twgcb.createCriteria().list(params) {
             resultTransformer(CriteriaSpecification.ALIAS_TO_ENTITY_MAP)
 
@@ -51,10 +51,17 @@ class TwGcbService {
                     }
             }
 
-
-
             if(params?.twgcbId){
                 eq('twgcbId',params?.twgcbId)
+            }
+
+            if(params?.type){
+                int type = params?.type as int
+                eq('type',type)
+            }
+
+            if(params?.cname){
+                ilike('cname', "%${params?.cname}%")
             }
 
             order("twgcbId", "asc")
