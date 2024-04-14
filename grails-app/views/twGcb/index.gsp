@@ -157,7 +157,9 @@
         <g:each in="${twgcbL}" var="twgcbI">
             <tr>
                 <td>
-                    ${twgcbI?.twgcbId}
+                    <a href="${createLink(controller: "twGcb", action: "viewTwgcb", id: twgcbI?.id)}">
+                        ${twgcbI?.twgcbId}
+                    </a>
                 </td>
                 <td>
                     ${twgcbI?.typeDesc}

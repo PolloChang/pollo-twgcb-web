@@ -17,6 +17,7 @@ class Twgcb {
     String      instructions
     String      defaultValue
     String      remark
+    String      typeDesc
 
     static mapping = {
         table "twgcb"
@@ -35,7 +36,7 @@ class Twgcb {
         defaultValue        column:"default_value",     comment:"GCB設定值"
         remark				column:"remark",            comment:"備註"
 
-
+        typeDesc            formula:"(select t.cdesc from bs_select t where t.type = 'twgcb_type' and t.code = this_.type )"
     }
 
     static constraints = {

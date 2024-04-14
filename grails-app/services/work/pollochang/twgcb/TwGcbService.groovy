@@ -26,13 +26,16 @@ class TwGcbService {
             switch (filterType) {
                 case PFilterType.QUICK:
                     projections {
+                        property("id", "id")
                         property("twgcbId", "twgcbId")
                         property("cname", "cname")
-                        sqlProjection("(select t.cdesc from bs_select t where t.type = 'twgcb_type' and t.code = this_.type ) typeDesc", ['typeDesc'], [StandardBasicTypes.STRING])
+                        property("typeDesc", "typeDesc")
+//                        sqlProjection("(select t.cdesc from bs_select t where t.type = 'twgcb_type' and t.code = this_.type ) typeDesc", ['typeDesc'], [StandardBasicTypes.STRING])
                     }
                     break
                 case PFilterType.FULL:
                     projections {
+                        property("id", "id")
                         property("twgcbId", "twgcbId")
                         property("cname", "cname")
                         property("type", "type")
@@ -40,7 +43,21 @@ class TwGcbService {
                         property("instructions", "instructions")
                         property("defaultValue", "defaultValue")
                         property("remark", "remark")
-                        sqlProjection("(select t.cdesc from bs_select t where t.type = 'twgcb_type' and t.code = this_.type ) typeDesc", ['typeDesc'], [StandardBasicTypes.STRING])
+                        property("typeDesc", "typeDesc")
+//                        sqlProjection("(select t.cdesc from bs_select t where t.type = 'twgcb_type' and t.code = this_.type ) typeDesc", ['typeDesc'], [StandardBasicTypes.STRING])
+                    }
+                    break
+                case PFilterType.VIEW:
+                    projections {
+                        property("id", "id")
+                        property("twgcbId", "twgcbId")
+                        property("cname", "cname")
+                        property("explanation", "explanation")
+                        property("instructions", "instructions")
+                        property("defaultValue", "defaultValue")
+                        property("remark", "remark")
+                        property("typeDesc", "typeDesc")
+//                        sqlProjection("(select t.cdesc from bs_select t where t.type = 'twgcb_type' and t.code = this_.type ) typeDesc", ['typeDesc'], [StandardBasicTypes.STRING])
                     }
                     break
                 default:

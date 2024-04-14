@@ -12,5 +12,8 @@ public enum PFilterType {
     FULL,
 
     //預設查詢結果
-    DEFAULT
+    DEFAULT,
+
+    //檢視筆資料
+    VIEW
 }
