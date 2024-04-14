@@ -68,16 +68,21 @@ class TwGcbService {
                     }
             }
 
-            if(params?.twgcbId){
+            if (params?.twgcbId) {
                 eq('twgcbId',params?.twgcbId)
             }
 
-            if(params?.type){
+            if (params?.type) {
                 int type = params?.type as int
                 eq('type',type)
             }
 
-            if(params?.cname){
+            if (params?.id) {
+                long id = params?.id as long
+                eq('id',id)
+            }
+
+            if (params?.cname) {
                 ilike('cname', "%${params?.cname}%")
             }
 
