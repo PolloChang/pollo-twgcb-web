@@ -35,31 +35,31 @@
 <main>
     <div>
         <div>
-            <h2 for="twgcbId">${message(code: "twgcb.twgcbId.label")}</h2>
+            <h2>${message(code: "twgcb.twgcbId.label")}</h2>
             <span id="twgcbId">${twgcbI?.twgcbId}</span>
         </div>
         <div>
-            <h3 for="type">${message(code: "twgcb.type.label")}</h3>
-            <p id="type">${twgcbI?.typeDesc}</p>
+            <h3>${message(code: "twgcb.type.label")}</h3>
+            <p>${twgcbI?.typeDesc}</p>
         </div>
         <div>
-            <h3 for="cname">${message(code: "twgcb.cname.label")}</h3>
+            <h3>${message(code: "twgcb.cname.label")}</h3>
             <p id="cname">${twgcbI?.cname}</p>
         </div>
         <div>
-            <h3 for="explanation">${message(code: "twgcb.explanation.label")}</h3>
+            <h3>${message(code: "twgcb.explanation.label")}</h3>
             <p id="explanation">${twgcbI?.explanation}</p>
         </div>
         <div>
-            <h3 for="instructions">${message(code: "twgcb.instructions.label")}</h3>
+            <h3>${message(code: "twgcb.instructions.label")}</h3>
             <p id="instructions">${twgcbI?.instructions}</p>
         </div>
         <div>
-            <h3 for="default-value">${message(code: "twgcb.defaultValue.label")}</h3>
+            <h3>${message(code: "twgcb.defaultValue.label")}</h3>
             <p id="default-value" >${twgcbI?.defaultValue}</p>
         </div>
         <div>
-            <h3 for="remark">${message(code: "twgcb.remark.label")}</h3>
+            <h3>${message(code: "twgcb.remark.label")}</h3>
             <p id="remark">${twgcbI?.remark}</p>
         </div>
     </div>
