@@ -23,8 +23,7 @@ class TwGcbController {
     }
 
     /**
-     *
-     * @return
+     * 資料檢視頁面
      */
     def viewTwgcb(){
         PFilterResult pFilterResult = twGcbService.filter(params, PFilterType.VIEW)

@@ -7,10 +7,18 @@ import org.hibernate.type.StandardBasicTypes
 import work.pollochang.util.PFilterResult
 import work.pollochang.util.PFilterType
 
-
+/**
+ * TWGCB 資料處理
+ */
 @Transactional
 class TwGcbService {
 
+    /**
+     * 查詢
+     * @param params
+     * @param filterType
+     * @return 查詢結果
+     */
     PFilterResult filter(
             GrailsParameterMap params,
             PFilterType filterType = PFilterType.DEFAULT
@@ -90,7 +98,7 @@ class TwGcbService {
         } as List<Twgcb>
 
         pFilterResult.domainList = twgcbList
-        pFilterResult.totalCount = twgcbList.totalCount
+        pFilterResult.totalCount = twgcbList.totalCount?:0
 
         return pFilterResult
 
