@@ -58,4 +58,9 @@ class Twgcb {
     boolean equals(Object obj) {
         return (this == obj)
     }
+
+    @Override
+    String toString() {
+        return twgcbId
+    }
 }

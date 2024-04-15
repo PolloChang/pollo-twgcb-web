@@ -30,4 +30,9 @@ class BsSelect {
         return (this == obj)
     }
 
+    @Override
+    String toString() {
+        return cdesc
+    }
+
 }
