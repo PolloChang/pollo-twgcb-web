@@ -33,63 +33,43 @@ class TwGcbService {
 
             switch (filterType) {
                 case PFilterType.QUICK:
-                    projections {
-                        property('id', 'id')
-                        property('twgcbId', 'twgcbId')
-                        property('cname', 'cname')
-                        property('typeDesc', 'typeDesc')
-                    }
+                    Closure projection = (Closure) quickProjection.clone()
+                    projection.delegate = delegate
+                    projection()
                     break
                 case PFilterType.FULL:
-                    projections {
-                        property('id', 'id')
-                        property('twgcbId', 'twgcbId')
-                        property('cname', 'cname')
-                        property('type', 'type')
-                        property('explanation', 'explanation')
-                        property('instructions', 'instructions')
-                        property('defaultValue', 'defaultValue')
-                        property('remark', 'remark')
-                        property('typeDesc', 'typeDesc')
-                    }
+                    Closure projection = (Closure) fullProjection.clone()
+                    projection.delegate = delegate
+                    projection()
                     break
                 case PFilterType.VIEW:
-                    projections {
-                        property('id', 'id')
-                        property('twgcbId', 'twgcbId')
-                        property('cname', 'cname')
-                        property('explanation', 'explanation')
-                        property('instructions', 'instructions')
-                        property('defaultValue', 'defaultValue')
-                        property('remark', 'remark')
-                        property('typeDesc', 'typeDesc')
-//                        sqlProjection('(select t.cdesc from bs_select t where t.type = 'twgcb_type' and t.code = this_.type ) typeDesc', ['typeDesc'], [StandardBasicTypes.STRING])
-                    }
+                    Closure projection = (Closure) viewProjection.clone()
+                    projection.delegate = delegate
+                    projection()
                     break
                 default:
-                    projections {
-                        property('twgcbId', 'twgcbId')
-                        property('cname', 'cname')
-                        sqlProjection("(select t.cdesc from bs_select t where t.type = 'twgcb_type' and t.code = this_.type ) typeDesc", ['typeDesc'], [StandardBasicTypes.STRING])
+                    Closure projection = (Closure) defaultProjection.clone()
+                    projection.delegate = delegate
+                    projection()
+            }
+
+            params.each { key, value ->
+                if(value){
+                    switch (key) {
+                        case 'twgcbId':
+                            eq('twgcbId', value)
+                            break
+                        case 'type':
+                            eq('type',value as int)
+                            break
+                        case 'id':
+                            eq('id', value as long)
+                            break
+                        case 'cname':
+                            ilike('cname', "%${value}%")
+                            break
                     }
-            }
-
-            if (params?.twgcbId) {
-                eq('twgcbId',params?.twgcbId)
-            }
-
-            if (params?.type) {
-                int type = params?.type as int
-                eq('type',type)
-            }
-
-            if (params?.id) {
-                long id = params?.id as long
-                eq('id',id)
-            }
-
-            if (params?.cname) {
-                ilike('cname', "%${params?.cname}%")
+                }
             }
 
             order('twgcbId', 'asc')
@@ -100,5 +80,61 @@ class TwGcbService {
 
         return pFilterResult
 
+    }
+
+    /**
+     * 快速顯示欄位
+     */
+    private Closure quickProjection =  {
+        projections {
+            property('id', 'id')
+            property('twgcbId', 'twgcbId')
+            property('cname', 'cname')
+            property('typeDesc', 'typeDesc')
+        }
+    }
+
+    /**
+     * 完整顯示欄位
+     */
+    private Closure fullProjection =  {
+        projections {
+            property('id', 'id')
+            property('twgcbId', 'twgcbId')
+            property('cname', 'cname')
+            property('type', 'type')
+            property('explanation', 'explanation')
+            property('instructions', 'instructions')
+            property('defaultValue', 'defaultValue')
+            property('remark', 'remark')
+            property('typeDesc', 'typeDesc')
+        }
+    }
+
+    /**
+     * 檢視單筆資料欄位
+     */
+    private Closure viewProjection =  {
+        projections {
+            property('id', 'id')
+            property('twgcbId', 'twgcbId')
+            property('cname', 'cname')
+            property('explanation', 'explanation')
+            property('instructions', 'instructions')
+            property('defaultValue', 'defaultValue')
+            property('remark', 'remark')
+            property('typeDesc', 'typeDesc')
+        }
+    }
+
+    /**
+     * 預設顯示欄位
+     */
+    private Closure defaultProjection =  {
+        projections {
+            property('twgcbId', 'twgcbId')
+            property('cname', 'cname')
+            sqlProjection("(select t.cdesc from bs_select t where t.type = 'twgcb_type' and t.code = this_.type ) typeDesc", ['typeDesc'], [StandardBasicTypes.STRING])
+        }
     }
 }
