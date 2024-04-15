@@ -1,5 +1,8 @@
 package work.pollochang.util
 
+/**
+ * 安全元件測試
+ */
 class SecurityTestController {
 
     def index() {
