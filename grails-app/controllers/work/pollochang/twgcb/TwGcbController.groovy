@@ -16,10 +16,7 @@ class TwGcbController {
     def index() {
 
         PFilterResult pFilterResult = twGcbService.filter(params, PFilterType.QUICK)
-        List<Twgcb> twgcbL = pFilterResult.getDomainList() as List<Twgcb>
-        long totalCount = pFilterResult.getTotalCount()
-
-        render view: '/twGcb/index', model: [twgcbL: twgcbL, totalCount: totalCount], params:params
+        render view: '/twGcb/index', model: [twgcbL: pFilterResult.getDomainList() as List<Twgcb>, totalCount: pFilterResult.getTotalCount()], params:params
     }
 
     /**
@@ -27,8 +24,7 @@ class TwGcbController {
      */
     def viewTwgcb(){
         PFilterResult pFilterResult = twGcbService.filter(params, PFilterType.VIEW)
-        List<Twgcb> twgcbL = pFilterResult.getDomainList() as List<Twgcb>
-        Twgcb twgcbI = twgcbL[0]
+        Twgcb twgcbI = pFilterResult.getDomainList().first() as Twgcb
         twgcbI?.instructions = twgcbI?.instructions?.replaceAll('\n', '<br/>')
         twgcbI?.explanation = twgcbI?.explanation?.replaceAll('\n', '<br/>')
         render view: '/twGcb/viewTwgcb', model: [twgcbI: twgcbI]
