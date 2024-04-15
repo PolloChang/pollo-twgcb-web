@@ -60,6 +60,11 @@ class Twgcb {
     }
 
     @Override
+    int hashCode() {
+        return Objects.hash(id, twgcbId)
+    }
+
+    @Override
     String toString() {
         return twgcbId
     }

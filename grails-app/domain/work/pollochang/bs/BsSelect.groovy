@@ -31,6 +31,11 @@ class BsSelect {
     }
 
     @Override
+    int hashCode() {
+        return Objects.hash(id, code)
+    }
+
+    @Override
     String toString() {
         return cdesc
     }
