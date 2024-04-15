@@ -55,8 +55,7 @@ class Twgcb {
     }
 
     @Override
-    boolean equals(Object o) {
-        if (this == o) return true
-        if (o == null || getClass() != o.getClass()) return false
+    boolean equals(Object obj) {
+        return (this == obj)
     }
 }
