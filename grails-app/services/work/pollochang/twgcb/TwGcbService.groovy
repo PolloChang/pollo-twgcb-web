@@ -63,7 +63,6 @@ class TwGcbService {
         pFilterResult.totalCount = twgcbList.totalCount?:0
 
         return pFilterResult
-
     }
 
     /**
