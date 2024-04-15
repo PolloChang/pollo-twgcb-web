@@ -49,6 +49,12 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-logging:${springBootVersion}")
     implementation("org.springframework.boot:spring-boot-starter-validation:${springBootVersion}")
     developmentOnly("org.springframework.boot:spring-boot-devtools:${springBootVersion}")
+    developmentOnly("org.springframework.boot:spring-boot-devtools:${springBootVersion}")
+    // https://mvnrepository.com/artifact/ch.qos.logback/logback-core
+    implementation 'ch.qos.logback:logback-core:1.2.13'
+
+
+//    Warning:(46, 20)
     compileOnly("io.micronaut:micronaut-inject-groovy")
     console("org.grails:grails-console")
     runtimeOnly("com.bertramlabs.plugins:asset-pipeline-grails:4.3.0")
