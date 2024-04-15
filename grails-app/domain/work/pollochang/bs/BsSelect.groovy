@@ -10,13 +10,13 @@ class BsSelect {
     String cdesc
 
     static mapping = {
-        table   "bs_select"
-        comment "選單代號對照表"
+        table   'bs_select'
+        comment '選單代號對照表'
         version false
-        id                  column: "id"
-        type				column:"type",				comment:"類別"
-        code				column:"code",				comment:"選單代號"
-        cdesc				column:"cdesc",				comment:"代號敘述"
+        id                  column: 'id'
+        type				column:'type',				comment:'類別'
+        code				column:'code',				comment:'選單代號'
+        cdesc				column:'cdesc',				comment:'代號敘述'
     }
 
     static constraints = {

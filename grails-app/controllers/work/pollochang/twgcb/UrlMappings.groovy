@@ -8,9 +8,9 @@ class UrlMappings {
             }
         }
 
-        "/"(controller: "twGcb", action: "index")
-        "500"(view:'/error')
-        "404"(view:'/notFound')
+        '/'(controller: 'twGcb', action: 'index')
+        '500'(view:'/error')
+        '404'(view:'/notFound')
 
     }
 }

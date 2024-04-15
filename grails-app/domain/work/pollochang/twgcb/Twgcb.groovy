@@ -20,21 +20,21 @@ class Twgcb {
     String      typeDesc
 
     static mapping = {
-        table "twgcb"
+        table 'twgcb'
         version true
-        id					column:"id"
-        manCreated			column:"man_created",		comment:"建檔人員"
-        dateCreated			column:"date_created",		comment:"建檔時間"
-        manLastUpdated		column:"man_last_updated",	comment:"最後異動人員"
-        lastUpdated			column:"last_updated",		comment:"最後異動時間"
-        note				column:"note",				comment:"資料註記"
-        twgcbId				column:"twgcb_id",          comment:"TWGCB-ID"
-        type				column:"type",				comment:"類別"
-        cname				column:"cname",				comment:"原則設定名稱"
-        explanation         column:"explanation",       comment:"說明"
-        instructions        column:"instructions",      comment:"設定方法"
-        defaultValue        column:"default_value",     comment:"GCB設定值"
-        remark				column:"remark",            comment:"備註"
+        id					column:'id'
+        manCreated			column:'man_created',		comment:'建檔人員'
+        dateCreated			column:'date_created',		comment:'建檔時間'
+        manLastUpdated		column:'man_last_updated',	comment:'最後異動人員'
+        lastUpdated			column:'last_updated',		comment:'最後異動時間'
+        note				column:'note',				comment:'資料註記'
+        twgcbId				column:'twgcb_id',          comment:'TWGCB-ID'
+        type				column:'type',				comment:'類別'
+        cname				column:'cname',				comment:'原則設定名稱'
+        explanation         column:'explanation',       comment:'說明'
+        instructions        column:'instructions',      comment:'設定方法'
+        defaultValue        column:'default_value',     comment:'GCB設定值'
+        remark				column:'remark',            comment:'備註'
 
         typeDesc            formula:"(select t.cdesc from bs_select t where t.type = 'twgcb_type' and t.code = this_.type )"
     }
