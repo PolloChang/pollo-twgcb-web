@@ -29,4 +29,5 @@ class TwGcbController {
         twgcbI?.explanation = twgcbI?.explanation?.replaceAll('\n', '<br/>')
         render view: '/twGcb/viewTwgcb', model: [twgcbI: twgcbI]
     }
+
 }

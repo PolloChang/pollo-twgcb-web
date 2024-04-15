@@ -139,4 +139,5 @@ class TwGcbService {
             sqlProjection("(select t.cdesc from bs_select t where t.type = 'twgcb_type' and t.code = this_.type ) typeDesc", ['typeDesc'], [StandardBasicTypes.STRING])
         }
     }
+
 }

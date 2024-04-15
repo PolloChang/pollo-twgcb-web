@@ -21,4 +21,5 @@ class UrlMappings {
         // 404 頁面未找到的對應
         '404'(view:'/notFound')
     }
+
 }

@@ -16,4 +16,5 @@ public enum PFilterType {
 
     //檢視筆資料
     VIEW
+
 }

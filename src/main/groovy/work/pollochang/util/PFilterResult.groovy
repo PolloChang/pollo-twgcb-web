@@ -10,4 +10,5 @@ class PFilterResult {
     List<GormEntity> domainList
 
     long totalCount
+
 }

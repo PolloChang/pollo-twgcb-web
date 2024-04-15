@@ -20,4 +20,5 @@ class BootStrap {
     def destroy = {
         // 在此處添加銷毀邏輯，例如釋放資源等
     }
+
 }
