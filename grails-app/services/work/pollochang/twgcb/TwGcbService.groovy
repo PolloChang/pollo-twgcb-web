@@ -31,26 +31,10 @@ class TwGcbService {
         List<Twgcb> twgcbList =  Twgcb.createCriteria().list(params) {
             resultTransformer(CriteriaSpecification.ALIAS_TO_ENTITY_MAP)
 
-            switch (filterType) {
-                case PFilterType.QUICK:
-                    Closure projection = (Closure) quickProjection.clone()
-                    projection.delegate = delegate
-                    projection()
-                    break
-                case PFilterType.FULL:
-                    Closure projection = (Closure) fullProjection.clone()
-                    projection.delegate = delegate
-                    projection()
-                    break
-                case PFilterType.VIEW:
-                    Closure projection = (Closure) viewProjection.clone()
-                    projection.delegate = delegate
-                    projection()
-                    break
-                default:
-                    Closure projection = (Closure) defaultProjection.clone()
-                    projection.delegate = delegate
-                    projection()
+            Closure projection = getProjectionClosure(filterType)
+            if (projection) {
+                projection.delegate = delegate
+                projection()
             }
 
             params.each { key, value ->
@@ -80,6 +64,24 @@ class TwGcbService {
 
         return pFilterResult
 
+    }
+
+    /**
+     * 依 定義查詢種類 回傳查詢顯示欄位
+     * @param filterType 定義查詢種類
+     * @return 查詢顯示欄位
+     */
+    private Closure getProjectionClosure(PFilterType filterType) {
+        switch (filterType) {
+            case PFilterType.QUICK:
+                return quickProjection
+            case PFilterType.FULL:
+                return fullProjection
+            case PFilterType.VIEW:
+                return viewProjection
+            default:
+                return defaultProjection
+        }
     }
 
     /**
