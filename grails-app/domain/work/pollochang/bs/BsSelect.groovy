@@ -24,4 +24,11 @@ class BsSelect {
         code                (nullable: false)
         cdesc               (nullable: false, blank: false, maxSize: 100)
     }
+
+    @Override
+    boolean equals(Object o) {
+        if (this == o) return true
+        if (o == null || getClass() != o.getClass()) return false
+    }
+
 }

@@ -53,4 +53,10 @@ class Twgcb {
         defaultValue        (nullable: true, blank: true, maxSize: 100)
         remark              (nullable: true, blank: true, maxSize: 100)
     }
+
+    @Override
+    boolean equals(Object o) {
+        if (this == o) return true
+        if (o == null || getClass() != o.getClass()) return false
+    }
 }
