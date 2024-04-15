@@ -21,6 +21,8 @@ configurations {
     }
 }
 
+apply from: "${rootProject.projectDir}/codenarc.gradle"
+
 version "1.0"
 
 dependencies {
@@ -62,6 +64,9 @@ dependencies {
 
 
     implementation group: 'org.postgresql', name: 'postgresql', version: '42.7.3'
+
+    // https://mvnrepository.com/artifact/org.codenarc/CodeNarc
+    implementation group: 'org.codenarc', name: 'CodeNarc', version: '3.4.0'
 }
 
 application {
