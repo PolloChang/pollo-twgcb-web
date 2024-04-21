@@ -18,7 +18,7 @@ repositories {
 
 apply from: "${rootProject.projectDir}/codenarc.gradle"
 
-version "1.0"
+//version "1.0"
 
 dependencies {
 
@@ -81,4 +81,8 @@ java {
 assets {
     minifyJs = true
     minifyCss = true
+}
+
+war {
+    archiveName = 'pollo-twgcb-web.war'
 }
