@@ -6,4 +6,9 @@ environments {
             password = PAes.decrypt("NQKj0tgDCp6IPIXVeQegIA==","asdfk2")
         }
     }
+    production {
+        dataSource {
+            password = PAes.decrypt("NQKj0tgDCp6IPIXVeQegIA==","asdfk2")
+        }
+    }
 }

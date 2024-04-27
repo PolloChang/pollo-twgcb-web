@@ -53,7 +53,7 @@ dataSource:
   pooled: true
   jmxExport: true
   driverClassName: org.postgresql.Driver
-  dialect: org.hibernate.dialect.PostgreSQLDialect
+  dialect: org.hibernate.dialect.PostgresSQLDialect
   logSql: false
   formatSql: true
 hibernate:
@@ -70,3 +70,8 @@ environments:
       username: twgcb_user1
     logging:
       config: "grails-app/conf/logback-development.xml"
+  production:
+    dataSource:
+      dbCreate: none
+      url: jdbc:postgresql://10.192.1.106:5432/twgcb_db
+      username: twgcb_user1
