@@ -44,7 +44,6 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-logging:${springBootVersion}")
     implementation("org.springframework.boot:spring-boot-starter-validation:${springBootVersion}")
     developmentOnly("org.springframework.boot:spring-boot-devtools:${springBootVersion}")
-    developmentOnly("org.springframework.boot:spring-boot-devtools:${springBootVersion}")
     // https://mvnrepository.com/artifact/ch.qos.logback/logback-core
     implementation 'ch.qos.logback:logback-core:1.2.13'
 

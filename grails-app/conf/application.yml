@@ -73,5 +73,23 @@ environments:
   production:
     dataSource:
       dbCreate: none
-      url: jdbc:postgresql://10.192.1.106:5432/twgcb_db
+      url: jdbc:postgresql://10.192.1.105:5432/twgcb_db
       username: twgcb_user1
+      properties:
+        jmxEnabled: true
+        initialSize: 5
+        maxActive: 50
+        minIdle: 5
+        maxIdle: 25
+        maxWait: 10000
+        maxAge: 600000
+        timeBetweenEvictionRunsMillis: 5000
+        minEvictableIdleTimeMillis: 60000
+        validationQuery: SELECT 1
+        validationQueryTimeout: 3
+        validationInterval: 15000
+        testOnBorrow: true
+        testWhileIdle: true
+        testOnReturn: false
+        jdbcInterceptors: ConnectionState
+        defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
