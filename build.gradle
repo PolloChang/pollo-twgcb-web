@@ -23,7 +23,9 @@ apply from: "${rootProject.projectDir}/codenarc.gradle"
 dependencies {
 
     profile "org.grails.profiles:web"
-    implementation("org.grails:grails-core")
+    implementation("org.grails:grails-core"){
+        implementation 'ch.qos.logback:logback-classic:1.2.13'
+    }
     implementation("org.grails:grails-logging")
     implementation("org.grails:grails-plugin-databinding")
     implementation("org.grails:grails-plugin-i18n")
@@ -41,11 +43,15 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter:${springBootVersion}")
     implementation("org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}")
     implementation "org.springframework.boot:spring-boot-starter-tomcat:${springBootVersion}"
-    implementation("org.springframework.boot:spring-boot-starter-logging:${springBootVersion}")
+    implementation("org.springframework.boot:spring-boot-starter-logging:${springBootVersion}"){
+        implementation 'ch.qos.logback:logback-classic:1.2.13'
+    }
     implementation("org.springframework.boot:spring-boot-starter-validation:${springBootVersion}")
     developmentOnly("org.springframework.boot:spring-boot-devtools:${springBootVersion}")
     // https://mvnrepository.com/artifact/ch.qos.logback/logback-core
     implementation 'ch.qos.logback:logback-core:1.2.13'
+
+
 
 
 //    Warning:(46, 20)
