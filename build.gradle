@@ -24,6 +24,7 @@ configurations{
                     [group: 'ch.qos.logback', name: 'logback-classic', useVersion: '1.2.13'],
                     [group: 'org.springframework', name: 'spring-framework-bom', useVersion: '5.3.34'],
                     [group: 'org.springframework', name: 'spring-web', useVersion: '5.3.34'],
+                    [group: 'org.springframework', name: 'spring-core', useVersion: '5.3.34'],
 
             ]
 
