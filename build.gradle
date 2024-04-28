@@ -9,6 +9,31 @@ plugins {
     id "eclipse"
 }
 
+configurations{
+    //因應資安問題, 移除 log4j 相依性
+    implementation {
+        exclude group: 'com.h2database' //CVE-2022-45868,CVE-2022-23221,CVE-2021-42392
+    }
+
+    // 強制升級
+    all{
+        resolutionStrategy.eachDependency { DependencyResolveDetails details ->
+            ModuleVersionSelector requested = details.requested
+            List forcePlugins = [
+                    [group: 'org.yaml', name: 'snakeyaml', useVersion: '1.33'],
+                    [group: 'ch.qos.logback', name: 'logback-classic', useVersion: '1.2.13'],
+            ]
+
+            forcePlugins.each {forcePlugin ->
+                if (requested.group == forcePlugin.group && requested.name == forcePlugin.name ) {
+                    details.useVersion forcePlugin.useVersion
+                }
+            }
+        }
+    }
+}
+
+
 group = "work.pollochang.twgcb"
 
 repositories {
@@ -23,9 +48,7 @@ apply from: "${rootProject.projectDir}/codenarc.gradle"
 dependencies {
 
     profile "org.grails.profiles:web"
-    implementation("org.grails:grails-core"){
-        implementation 'ch.qos.logback:logback-classic:1.2.13'
-    }
+    implementation("org.grails:grails-core")
     implementation("org.grails:grails-logging")
     implementation("org.grails:grails-plugin-databinding")
     implementation("org.grails:grails-plugin-i18n")
@@ -43,9 +66,7 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter:${springBootVersion}")
     implementation("org.springframework.boot:spring-boot-starter-actuator:${springBootVersion}")
     implementation "org.springframework.boot:spring-boot-starter-tomcat:${springBootVersion}"
-    implementation("org.springframework.boot:spring-boot-starter-logging:${springBootVersion}"){
-        implementation 'ch.qos.logback:logback-classic:1.2.13'
-    }
+    implementation("org.springframework.boot:spring-boot-starter-logging:${springBootVersion}")
     implementation("org.springframework.boot:spring-boot-starter-validation:${springBootVersion}")
     developmentOnly("org.springframework.boot:spring-boot-devtools:${springBootVersion}")
     // https://mvnrepository.com/artifact/ch.qos.logback/logback-core
@@ -55,14 +76,14 @@ dependencies {
 
 
 //    Warning:(46, 20)
-    compileOnly("io.micronaut:micronaut-inject-groovy")
+    compileOnly("io.micronaut:micronaut-inject-groovy:3.8.12")
     console("org.grails:grails-console")
     runtimeOnly("com.bertramlabs.plugins:asset-pipeline-grails:4.3.0")
     runtimeOnly("javax.xml.bind:jaxb-api:2.3.1")
     runtimeOnly("org.apache.tomcat:tomcat-jdbc")
     runtimeOnly("org.fusesource.jansi:jansi:1.18")
     runtimeOnly("org.glassfish.web:el-impl:2.2.1-b05")
-    testImplementation("io.micronaut:micronaut-inject-groovy")
+    testImplementation("io.micronaut:micronaut-inject-groovy:3.8.12")
     testImplementation("org.grails:grails-gorm-testing-support")
     testImplementation("org.grails:grails-web-testing-support")
     testImplementation("org.junit.jupiter:junit-jupiter:5.10.1")
