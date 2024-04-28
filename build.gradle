@@ -22,6 +22,9 @@ configurations{
             List forcePlugins = [
                     [group: 'org.yaml', name: 'snakeyaml', useVersion: '1.33'],
                     [group: 'ch.qos.logback', name: 'logback-classic', useVersion: '1.2.13'],
+                    [group: 'org.springframework', name: 'spring-framework-bom', useVersion: '5.3.34'],
+                    [group: 'org.springframework', name: 'spring-web', useVersion: '5.3.34'],
+
             ]
 
             forcePlugins.each {forcePlugin ->
