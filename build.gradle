@@ -32,7 +32,7 @@ dependencies {
     implementation("org.grails:grails-plugin-services")
     implementation("org.grails:grails-plugin-url-mappings")
     implementation("org.grails:grails-web-boot")
-    implementation("org.grails.plugins:gsp")
+    implementation("org.grails.plugins:gsp:5.3.0")
     implementation("org.grails.plugins:hibernate5:${hibernate5Version}")
     implementation("org.grails.plugins:scaffolding")
     //https://mvnrepository.com/artifact/org.hibernate/hibernate-core
